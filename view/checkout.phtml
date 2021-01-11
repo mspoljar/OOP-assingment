@@ -1,0 +1,10 @@
+<?php
+foreach($items as $item){
+?>
+<div>
+<h5><?php echo $item['name'] . '   ' .  $item['quantity'] . '  x  ' .  $item['price'] . ' = ' .  ($item['price']*$item['quantity']); ?></h5>
+</div>
+<?php
+}
+?>
+<h5><?php echo 'Total price is:' . $totalprice; ?></h5>

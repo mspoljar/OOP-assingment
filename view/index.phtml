@@ -1,0 +1,27 @@
+
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+  <?php
+    include_once 'example/header.phtml';
+    ?>
+  </head>
+  <body>
+  <div class="container">
+        <?php
+        require_once 'example/body.phtml';
+        ?>
+        <div class="container">
+            <?php
+            echo $content;
+            ?>
+        </div>
+        <?php
+        require_once 'example/footer.phtml';
+        ?>
+    </div>
+    <?php
+    require_once 'example/scripts.phtml';
+    ?>
+  </body>
+</html>

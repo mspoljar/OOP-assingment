@@ -1,0 +1,39 @@
+<div class="grid-x">
+<table>
+  <thead>
+    <tr>
+      <th width="200">SKU</th>
+      <th>Price</th>
+      <th width="150">Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+    foreach($_SESSION['cart'] as $item){
+    ?>
+    <tr>
+      <td> <?php echo $item['sku'] ?></td>
+      <td><?php echo $item['price'] ?></td>
+      <td><?php echo $item['quantity'] ?></td>
+      <th><form action="/index/remove" method="post">
+      <button class="alert button">Remove</button>
+      <input type="number" name="removequant" id="removequant">
+      <input type="hidden" name="sku" value="<?php echo $item['sku'] ?>">
+      </form></th>
+    </tr>
+    <?php
+    }
+    ?>
+  </tbody>
+</table>
+</div>
+<a href="/index/checkout"><button class="button primary">Checkout</button></a>
+
+
+<div class="grid-x">
+<?php 
+        foreach($items as $item){
+            include 'shopingitem.phtml';
+        }
+        ?>
+</div>

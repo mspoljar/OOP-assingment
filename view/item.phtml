@@ -1,0 +1,14 @@
+<div class="cell" style="text-align: center;">
+    <div class="callout">
+
+    <h5><?php echo $item->sku . ' ' . $item->product_name . ' ' . $item->price; ?></h5>
+    <br>
+    <form action="/index/add" method="post">
+    <input type="number" name="quantity" step="1">
+    <input type="hidden" name="sku" value=<?php echo $item->sku?>>
+    <input type="submit" class="button primary" value="Add">
+    </form>
+    
+
+    </div>
+</div>
