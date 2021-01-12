@@ -1,5 +1,5 @@
 <?php
-
+//file za konfiguriranje podataka za app
 return [
     'nazivAPP' => 'shop',
     'url' => 'http://shop1.hr/',

@@ -31,7 +31,7 @@ class IndexController extends Controller
             'items'=>Catalog::show()
         ]);
     }
-
+//metoda cartadd sluzi za dodavanje proizvoda u shoping cart
     public function cartadd()
     {
         $items=array(Catalog::find());
@@ -47,7 +47,7 @@ class IndexController extends Controller
            ]
             ];
        }
-        
+//nakon sto je nadjen item u catalogu,provjerava se postoji li vec takav item u kosarici i nadodaje se kolicina ako postoji
         if(!empty($_SESSION['cart'])){
             if(array_key_exists($itemArray[$sku]['sku'],$_SESSION['cart'])){
                 foreach($_SESSION['cart'] as $k=>$v){
@@ -68,21 +68,23 @@ class IndexController extends Controller
         header('location: /index/shop');
         
     }
-
+//metoda za checkout u kojoj se izracunava ukupna cijena,smanjuje količina u katalogu i ispraznjuje se cart
     public function checkout()
     {
         $totalprice=0;
        $itemArray=array();
         foreach($_SESSION['cart'] as $item){
             $totalprice=$totalprice+($item['price'] * $item['quantity']);
+            Catalog::removequant($item['quantity'],$item['sku']);
         }
         $itemArray=array_merge($itemArray,$_SESSION['cart']);
+        unset($_SESSION['cart']);
         $this->view->render('checkout',[
             'items'=>$itemArray,
             'totalprice'=>$totalprice
         ]);
     }
-
+//metoda remove sluzi za smanjivanje količine itema koji se nalaze u cartu
     public function remove()
     {
         if(!empty($_SESSION['cart'])){

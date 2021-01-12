@@ -1,4 +1,5 @@
 <?php 
+//klasa za renderiranje viewa
 class View
 {
     private $layout;

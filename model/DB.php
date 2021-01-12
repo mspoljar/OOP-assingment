@@ -1,5 +1,5 @@
 <?php
-
+//klasa za konekciju s bazom podataka
 class DB extends PDO
 {
     private static $instance;
